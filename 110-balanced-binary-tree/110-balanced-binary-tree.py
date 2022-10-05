@@ -11,22 +11,19 @@ class Solution:
         if abs(self.depth(root.left)-self.depth(root.right))>1:
             return False
         return self.isBalanced(root.left) and self.isBalanced(root.right)
-        
-        
-        
-    def depth(self,root):
-        level=0
-        if not root:
+         
+    def depth(self,node):
+        maxdepth=0
+        if not node:
             return 0
-        q=deque([root])
-        while q:
-            for i in range(len(q)):
-                node=q.popleft()
-                if node:
-                    q.append(node.left)
-                    q.append(node.right)
-            level+=1
-
-        return level-1
-
+        stack=[[node,1]]
+        while stack:
+            n,depth=stack.pop()
+            if n:
+                maxdepth=max(maxdepth,depth)
+                stack.append([n.left,depth+1])
+                stack.append([n.right,depth+1])
+        
+        return maxdepth
+            
         
