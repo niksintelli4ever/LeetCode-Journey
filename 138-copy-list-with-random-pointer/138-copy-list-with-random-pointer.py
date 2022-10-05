@@ -15,6 +15,7 @@ class Solution:
             copy=Node(curr.val)
             dict1[curr]=copy
             curr=curr.next
+        
         curr=head
         while curr:
             copy=dict1[curr]
