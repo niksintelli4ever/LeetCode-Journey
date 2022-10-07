@@ -14,13 +14,18 @@ class DetectSquares:
         res=0
         px,py=point
         for x,y in self.list:
-            if abs(px-x)!=abs(py-y) or px==x or py==y:
+            if (abs(x-px) !=abs(y-py)) or x==px or y==py:
                 continue
-            res+=self.dict1[(x,py)]*self.dict1[(px,y)]
+            res+=self.dict1[x,py] *self.dict1[px,y]
         
         return res
         
 
+
+# Your DetectSquares object will be instantiated and called as such:
+# obj = DetectSquares()
+# obj.add(point)
+# param_2 = obj.count(point)
 
 # Your DetectSquares object will be instantiated and called as such:
 # obj = DetectSquares()
