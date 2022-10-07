@@ -11,30 +11,24 @@ class Solution:
         dummy=ListNode(0,head)
         slow=head
         fast=head
-        prev=None
         while fast and fast.next:
             slow=slow.next
             fast=fast.next.next
-        
         second=slow.next
         slow.next=None
+        prev=None
         while second:
             temp=second.next
             second.next=prev
             prev=second
             second=temp
-        
         first=head
         second=prev
         while first and second:
-            temp1=first.next
-            temp2=second.next
+            temp1,temp2=first.next,second.next
             first.next=second
             second.next=temp1
             first,second=temp1,temp2
         
         return dummy.next
-        
-            
-        
         
