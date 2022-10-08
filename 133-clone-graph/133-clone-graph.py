@@ -15,10 +15,7 @@ class Solution:
             copy=Node(root.val)
             dict1[root]=copy
             for neigh in root.neighbors:
-                copy.neighbors.append((dfs(neigh)))
+                copy.neighbors.append(dfs(neigh))
             return copy
-        
-        
         return dfs(node) if node else None
-                
         
