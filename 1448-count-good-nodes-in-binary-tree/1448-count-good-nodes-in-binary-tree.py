@@ -6,17 +6,16 @@
 #         self.right = right
 class Solution:
     def goodNodes(self, root: TreeNode) -> int:
-        if not root:
-            return 0
-        count=0
+        stack=[[root,root.val]]
         res=0
-        stack=[(root,root.val)]
         while stack:
-            node,cmax=stack.pop()
+            node,valu=stack.pop()
             if node:
-                res+=node.val>=cmax
-                stack.append([node.left,max(cmax,node.val)])
-                stack.append([node.right,max(cmax,node.val)])
-        # print(maxval)
+                res+=node.val>=valu
+                stack.append([node.left,max(valu,node.val)])
+                stack.append([node.right,max(valu,node.val)])
+        
         return res
+                
+        
         
