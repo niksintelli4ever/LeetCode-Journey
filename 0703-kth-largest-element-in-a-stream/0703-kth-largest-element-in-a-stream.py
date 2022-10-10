@@ -13,7 +13,6 @@ class KthLargest:
         k=self.k
         nums=self.nums
         heappush(self.nums,val)
-        heapify(self.nums)
         while len(self.nums)>self.k:
             heappop(self.nums)
         
