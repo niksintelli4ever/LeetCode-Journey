@@ -8,11 +8,12 @@ class Solution:
         slow=ListNode(0,head)
         curr=head
         fast=head
+        prev=None
         while fast and fast.next:
             slow=slow.next
             fast=fast.next.next
         second=slow.next
-        prev=slow.next=None
+        slow.next=prev
         while second:
             temp=second.next
             second.next=prev
