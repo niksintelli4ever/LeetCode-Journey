@@ -5,7 +5,7 @@ class Solution:
         quad=[]
         def kSum(k,start,target):
             if k!=2:
-                for i in range(start,len(nums)):
+                for i in range(start,len(nums)-k+1):
                     if i>start and nums[i]==nums[i-1]:
                         continue
                     quad.append(nums[i])
