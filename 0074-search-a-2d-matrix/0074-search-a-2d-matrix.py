@@ -13,7 +13,7 @@ class Solution:
     
     
         
-        row=(top+bottom)//2
+     
         l=0
         r=len(matrix[0])-1
         while l<=r:
