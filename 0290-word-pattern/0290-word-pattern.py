@@ -16,4 +16,3 @@ class Solution:
         if list1== list2:
             return True
         return False
-        
