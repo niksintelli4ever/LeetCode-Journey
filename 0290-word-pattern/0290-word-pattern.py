@@ -1,12 +1,12 @@
 class Solution:
     def wordPattern(self, pattern: str, s: str) -> bool:
-        dict1=defaultdict(list)
+        dict1=defaultdict(set)
         slist = s.split(" ")
         for i in range(len(slist)):
-            dict1[slist[i]].append(i)
-        dict2 = defaultdict(list)
+            dict1[slist[i]].add(i)
+        dict2 = defaultdict(set)
         for i in range(len(pattern)):
-            dict2[pattern[i]].append(i)
+            dict2[pattern[i]].add(i)
         
         if dict1.values() == dict2.values():
             return True
