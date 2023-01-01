@@ -7,9 +7,6 @@ class Solution:
         dict2 = defaultdict(set)
         for i in range(len(pattern)):
             dict2[pattern[i]].add(i)
-        
-        if dict1.values() == dict2.values():
-            return True
         list1= []
         for i in dict1.values():
             list1.append(i)
