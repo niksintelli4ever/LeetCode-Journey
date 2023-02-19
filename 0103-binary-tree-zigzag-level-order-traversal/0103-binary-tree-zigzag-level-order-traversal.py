@@ -10,7 +10,7 @@ class Solution:
             return
         q=deque([root])
         res=[]
-        n=1
+        flag=1
         while q:
             level=[]
             for i in range(len(q)):
@@ -20,10 +20,15 @@ class Solution:
                     q.append(node.left)
                     q.append(node.right)
             if level:
-                if n==1:
-                    res.append(level[::])
-                    n=0
+                if flag>0:
+                    res.append(level)
+                    flag=flag*-1
                 else:
                     res.append(level[::-1])
-                    n=1
+                    flag=flag*-1
+        
         return res
+                    
+                    
+            
+        
