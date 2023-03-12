@@ -1,20 +1,26 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        
-        from functools import lru_cache
-        
-        @lru_cache()
-        def helper(prices, buy):
-            if not len(prices):
+        dp={}
+        def dfs(n,buying):
+            if n>=len(prices):
                 return 0
+            key=str(n)+"_"+str(buying)
+            if key in dp:
+                return dp[key]
+            if buying:
+                buy=dfs(n+1,not buying)-prices[n]
+                cooldown=dfs(n+1,buying)
+                option=max(buy,cooldown)
+                dp[key]=option
             
-            if buy:
-                a = -prices[0]+helper(prices[1:], not buy)
-                b = helper(prices[1:], buy)
-            else:
-                a = prices[0]+helper(prices[2:], not buy)
-                b = helper(prices[1:], buy)
-                
-            return max(a, b)
+            if not buying:
+                sell=dfs(n+2,not buying)+prices[n]
+                cooldown=dfs(n+1,buying)
+                option=max(sell,cooldown)
+                dp[key]=option
+            
+            return dp[key]
         
-        return helper(tuple(prices), True)
+        return dfs(0,True)
+            
+        
