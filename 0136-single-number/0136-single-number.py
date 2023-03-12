@@ -5,3 +5,4 @@ class Solution:
             res^=i
         
         return res
+        
