@@ -1,24 +1,20 @@
 class Solution:
     def findTargetSumWays(self, nums: List[int], target: int) -> int:
-        
-        dp = {}
-        n=len(nums)
-        def rec(target,n):
-            
-            if target == 0 and n==0:
-                return 1
-            
-            if target!=0 and n==0:
-                return 0
-            
-            key = str(target) + '_' + str(n)
-            
+        dp={}
+        def dfs(n,target):
+            key=str(n)+"_"+str(target)
             if key in dp:
                 return dp[key]
-            
-            dp[key] = rec(target+nums[n-1],n-1) + rec(target-nums[n-1],n-1)
-            
+            if n==len(nums) and target==0:
+                return 1
+            if n>=len(nums) and target!=0:
+                return 0
+            option=0
+            option+=dfs(n+1,target-nums[n])+dfs(n+1,target+nums[n])
+        
+            dp[key]=option
+        
             return dp[key]
         
-        return rec(target,n )
+        return dfs(0,target)
         
