@@ -11,7 +11,6 @@ class Solution:
                 return True
             if root.val>left and root.val<right:
                 return True and dfs(root.left,left,root.val) and dfs(root.right,root.val,right)
-            else:
-                return False
-        return dfs(root,float('-inf'),float(inf))
+            return False
+        return dfs(root,float("-inf"),float("inf"))
         
