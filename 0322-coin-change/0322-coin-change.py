@@ -1,20 +1,17 @@
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
         dp={}
-        def coinC(n,amount):
-            key=str(n)+"_"+str(amount)
+        def dfs(n,target):
+            key=str(n)+"_"+str(target)
             if key in dp:
                 return dp[key]
-            if amount==0:
+            if target==0:
                 return 0
-            if n>=len(coins) or amount<0:
+            if n>=len(coins) or target<0:
                 return float("inf")
-            option1=min(1+coinC(n,amount-coins[n]),coinC(n+1,amount))
-            
-            dp[key]=option1
-        
+            option=min(1+dfs(n,target-coins[n]),dfs(n+1,target))
+            dp[key]=option
             return dp[key]
-        a=coinC(0,amount)   
+        a=dfs(0,amount)
         return -1 if a==float("inf") else a
-    
         
