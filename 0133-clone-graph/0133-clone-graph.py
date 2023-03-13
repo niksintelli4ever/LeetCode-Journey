@@ -9,14 +9,14 @@ class Node:
 class Solution:
     def cloneGraph(self, node: 'Node') -> 'Node':
         dict1={}
-        def dfs(root):
-            if root in dict1:
-                return dict1[root]
-            copy=Node(root.val)
-            dict1[root]=copy
-            for neigh in root.neighbors:
+        def dfs(node):
+            if node in dict1:
+                return dict1[node]
+            copy=Node(node.val)
+            dict1[node]=copy
+            for neigh in node.neighbors:
                 copy.neighbors.append(dfs(neigh))
+        
             return copy
-        return dfs(node) if node else None
-    
+        return None if not node else dfs(node)
         
