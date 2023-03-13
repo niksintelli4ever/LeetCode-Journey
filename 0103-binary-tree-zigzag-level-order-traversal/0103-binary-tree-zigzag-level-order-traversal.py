@@ -6,8 +6,6 @@
 #         self.right = right
 class Solution:
     def zigzagLevelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
-        if not root:
-            return
         q=deque([root])
         res=[]
         flag=1
@@ -19,16 +17,14 @@ class Solution:
                     level.append(node.val)
                     q.append(node.left)
                     q.append(node.right)
+            
             if level:
-                if flag>0:
+                if flag:
                     res.append(level)
-                    flag=flag*-1
+                    flag=0
                 else:
                     res.append(level[::-1])
-                    flag=flag*-1
-        
+                    flag=1
         return res
-                    
-                    
-            
+                
         
