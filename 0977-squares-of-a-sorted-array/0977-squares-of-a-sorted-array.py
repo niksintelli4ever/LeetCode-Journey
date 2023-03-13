@@ -1,16 +1,19 @@
 class Solution:
     def sortedSquares(self, nums: List[int]) -> List[int]:
-        q=deque()
         l=0
         r=len(nums)-1
+        q=deque()
         while l<=r:
-            if abs(nums[l])>=abs(nums[r]):
-                q.appendleft(nums[l]*nums[l])
+            ls=nums[l]*nums[l]
+            rs=nums[r]*nums[r]
+            
+            if ls>rs:
+                q.appendleft(ls)
                 l+=1
             else:
-                q.appendleft(nums[r]*nums[r])
+                q.appendleft(rs)
                 r-=1
-        
-        return q
             
+        return q
                 
+        
