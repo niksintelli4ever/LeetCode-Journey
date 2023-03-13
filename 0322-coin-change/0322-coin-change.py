@@ -1,6 +1,7 @@
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
         dp={}
+        @lru_cache
         def dfs(n,target):
             key=str(n)+"_"+str(target)
             if key in dp:
