@@ -9,13 +9,11 @@ class Solution:
                 return 1
             if s[n]=='0':
                 return 0
-            
             option=dfs(n+1)
-            if (n+1)<len(s) and (s[n]=='1' or s[n]=='2' and s[n+1] in "0123456"):
+            if (n+1<len(s) and (s[n]=='1' or s[n]=='2' and s[n+1] in "0123456")):
                 option+=dfs(n+2)
             dp[key]=option
             return dp[key]
-    
         return dfs(0)
-            
+        
         
