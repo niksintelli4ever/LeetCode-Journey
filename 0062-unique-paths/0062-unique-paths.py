@@ -8,4 +8,4 @@ class Solution:
             row=newRow
         
         return row[0]
-        
+                
